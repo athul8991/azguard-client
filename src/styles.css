@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+.show{
+    display: block;
+
+
+}
+
+.modal-bg{
+    background-color: rgba(0, 0, 0,.3);
+    backdrop-filter:blur(4px);
+}
+
+.modal-content{
+    box-shadow: 1px 1px 7px 1px black;
+}
+
