@@ -12,13 +12,16 @@
                     <div class="col-md-3 col-6">
                         <button type="button" class="btn btn-outline-dark "  (click)="searchById(searchId.value)">Search</button>
                     </div>
-                    <div class="col-md-5 col-12">
+                    <div class="col-md-3 col-8">
                         <select class="form-control bg-primary text-white" #status (change)="onFilter(status.value)">
                             @for(item of ["all","completed","pending"]; track item){
                             <option class="bg-light text-primary" [value]="item">{{item}}</option>
                             }
                             
                         </select>
+                    </div>
+                    <div class="col-md-3 col-12">
+                        <button type="button" class="fn-btn" (click)="onDownload()">Download</button>
                     </div>
                 </div>
 

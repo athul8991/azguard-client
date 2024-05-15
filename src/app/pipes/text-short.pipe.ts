@@ -7,14 +7,14 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class TextShortPipe implements PipeTransform {
 
   transform(value:any): string|null {
-    if(value.length <=10){
+    if(value.length <=15){
       return value;
     }
     
     value.trim('\n')
     console.log(value);
     
-    const shortText = value.substring(0,10);
+    const shortText = value.substring(0,15);
     console.log(shortText);
     
 

@@ -23,8 +23,10 @@ export class AddTodoComponent implements OnInit {
   @Output('closeModelStatus') closeModalStatus = new EventEmitter<boolean>();
 
   csvFile: File|null =null;
-  errMsg:string|null = null
-  fileName:string ="Choose CSV file..."
+  errMsg:string|null = null;
+  scssMsg:string |null = null;
+  fileName:string ="Choose CSV file...";
+
 
   constructor(private dataServeice :DataService){}
 
@@ -37,6 +39,8 @@ export class AddTodoComponent implements OnInit {
   closeModal(){
     this.closeModalStatus.emit(false);
     this.modalClass=false;
+    this.scssMsg=null;
+    this.errMsg=null
 
   }
 
@@ -64,13 +68,14 @@ export class AddTodoComponent implements OnInit {
       this.dataServeice.onAddTodo(this.todoData.value.description).subscribe({
         next:(res:any)=>{
           if(res.message =="success"){
-            console.log(res);
-            
+            this.scssMsg ="Success"
+            this.errMsg=null  
           }
         },
         error:(err:any)=>{
           console.log(err);
-          
+          this.errMsg="err"
+          this.scssMsg=null
         }
       })
       }
@@ -81,14 +86,18 @@ export class AddTodoComponent implements OnInit {
       this.dataServeice.onUploadCsv(this.csvFile).subscribe({
         next:(res:any)=>{
           if(res.message =="success"){
-            console.log(res);
 
-            this.fileName ="Choose CSV file..."
+            this.scssMsg ="Success";
+            this.errMsg=null
+           
+           this.fileName ="Choose CSV file..."
             
           }
         },
         error:(err:any)=>{
           console.log(err);
+          this.errMsg="err"
+          this.scssMsg=null;
           
         }
       })

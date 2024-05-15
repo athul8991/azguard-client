@@ -12,6 +12,8 @@
           {{todoData.description}}
          </textarea>
         </div>
+        <div class="alert alert-success" *ngIf="scssMsg && !errMsg">{{scssMsg}} </div>
+        <div class="alert alert-danger" *ngIf="errMsg && !scssMsg">{{errMsg}} </div>
         <div class="modal-footer">
           <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Edit</button> -->
           <button type="button" class="btn btn-primary" (click)="!todoEdit?onEdit():onSave(todoDesc.value)">{{!todoEdit?'Edit':'Save'}}</button>

@@ -6,6 +6,8 @@ import { DataService } from './service/data.service';
 import { CommonModule } from '@angular/common';
 import { TextShortPipe } from './pipes/text-short.pipe';
 
+import { saveAs } from 'file-saver';
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -142,6 +144,20 @@ export class AppComponent implements OnInit {
         
       }
     })
+  }
+
+  onDownload(){
+
+    this.dataService.onDownload().subscribe({
+      next:(res:any)=>{
+        saveAs(res ,'todo.csv')
+      },
+      error:(err)=>{
+        console.log(err);
+        
+      }
+    })
+
   }
 
   

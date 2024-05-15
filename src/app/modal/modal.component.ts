@@ -21,15 +21,23 @@ export class ModalComponent  implements OnInit{
   @Output('modalStatus') modlaStatus = new EventEmitter<boolean>();
 
   todoEdit:boolean =false;
+  scssMsg!:string|null;
+  errMsg !:string|null;
+
   
   constructor(private dataService:DataService){}
+
   ngOnInit(): void {
     console.log(this.modalClass);
+   
+    
   }
 
   modalClose(){
     this.modalClass=false;
     this.modlaStatus.emit(false);
+    this.scssMsg=null;
+    this.errMsg=null
   }
 
   onEdit(){
@@ -43,14 +51,21 @@ export class ModalComponent  implements OnInit{
         next:(res:any)=>{
           if(res.message =="success"){
             console.log(res);
+            this.scssMsg ="Update success"
+            this.errMsg=null
             
           }else{
             console.log(res);
+
+          
+            
             
           }
         },
         error:(err:any)=>{
           console.log(err);
+          this.errMsg=err;
+          this.scssMsg =null;
           
         }
       })

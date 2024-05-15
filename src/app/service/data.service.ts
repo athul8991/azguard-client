@@ -46,4 +46,10 @@ export class DataService {
 
     return this.http.post(`${mainUrl}/upload`,formData);
   }
+
+  onDownload(){
+    return this.http.get(`${mainUrl}/download`,{
+      responseType:'blob'
+    });
+  }
 }

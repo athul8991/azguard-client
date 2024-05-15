@@ -8,25 +8,27 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
+        
         <div class="modal-body">
-          
-            <label for="" class="choose-radio">Enter Todo
-                <input type="radio"  class="form-controler" formControlName="chooseMethod" value="text">
-                
-            </label>
-            <label for="" class="choose-radio">Upload CSV
-            <input type="radio" class="form-controler" formControlName="chooseMethod" value="file">
-
-            </label>
-            <input type="text" class="form-control"  formControlName="description" *ngIf="todoData.value.chooseMethod && todoData.value.chooseMethod ==='text'">
-            <div class="custom-file" *ngIf="todoData.value.chooseMethod && todoData.value.chooseMethod ==='file'">
-                <input type="file" class="custom-file-input" #csv (change)="onCsvChange($event)">
-                <label class="custom-file-label mt-2" for="validatedCustomFile">{{fileName}}</label>
-                
-              </div>
-
+          <label for="" class="choose-radio">Enter Todo
+            <input type="radio"  class="form-controler" formControlName="chooseMethod" value="text">
             
+          </label>
+          <label for="" class="choose-radio">Upload CSV
+            <input type="radio" class="form-controler" formControlName="chooseMethod" value="file">
+            
+          </label>
+          <input type="text" class="form-control"  formControlName="description" *ngIf="todoData.value.chooseMethod && todoData.value.chooseMethod ==='text'">
+          <div class="custom-file" *ngIf="todoData.value.chooseMethod && todoData.value.chooseMethod ==='file'">
+            <input type="file" class="custom-file-input" #csv (change)="onCsvChange($event)">
+            <label class="custom-file-label mt-2" for="validatedCustomFile">{{fileName}}</label>
+            
+          </div>
+          
+          
         </div>
+        <div class="alert alert-success" *ngIf="scssMsg && !errMsg">{{scssMsg}} </div>
+        <div class="alert alert-danger" *ngIf="errMsg && !scssMsg">{{errMsg}} </div>
         <div class="modal-footer">
           <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Edit</button> -->
           <button type="submit" class="btn btn-primary" >Add</button>
